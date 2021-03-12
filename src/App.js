@@ -7,7 +7,7 @@ function App() {
   console.log(gerneratePalette(seedColors[1]));
   return (
     <div className="App">
-      <Palette {...seedColors[1]} />
+      <Palette Palette={gerneratePalette(seedColors[1])} />
     </div>
   );
 }
