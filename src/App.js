@@ -4,10 +4,10 @@ import seedColors from './seedColors';
 import { gerneratePalette } from './colorHelper';
 
 function App() {
-  console.log(gerneratePalette(seedColors[1]));
+  // console.log(gerneratePalette(seedColors[0]));
   return (
     <div className="App">
-      <Palette Palette={gerneratePalette(seedColors[1])} />
+      <Palette Palette={gerneratePalette(seedColors[4])} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ const Palette = (props) => {
   const [level, setLevel] = useState(400);
   const [format, setFormat] = useState('hex');
   const colorBoxes = props.Palette.colors[level].map((color) => (
-    <ColorBox background={color[format]} name={color.name} />
+    <ColorBox background={color[format]} name={color.name} key={color.id} />
   ));
   const changeLevel = (level) => {
     setLevel(level);
@@ -26,6 +26,10 @@ const Palette = (props) => {
       />
 
       <div className="Palette-colors">{colorBoxes}</div>
+      <footer className="Palette-footer">
+        {props.Palette.paletteName}
+        <span className="emoji"> {props.Palette.emoji}</span>
+      </footer>
     </div>
   );
 };
