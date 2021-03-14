@@ -6,14 +6,9 @@ import Select from '@material-ui/core/Select';
 import { IconButton, MenuItem } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  //   const [format, setFormat] = useState('hex');
-
-  //   const handleChange = (e) => {
-  //     setFormat(e.target.value);
-  //     props.changeFormat(e.target.value);
-  //   };
   const [open, setOpen] = useState(true);
   const closeSnackBar = () => {
     setOpen(false);
@@ -22,7 +17,7 @@ const Navbar = (props) => {
   return (
     <header className="Navbar">
       <div className="logo">
-        <a href="#">React Color Picker</a>
+        <Link onTouchEnd="/">React Color Picker</Link>
       </div>
       <div className="slider-container">
         <span>Level:{props.level}</span>

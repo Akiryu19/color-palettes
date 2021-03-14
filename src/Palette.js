@@ -3,7 +3,6 @@ import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import 'rc-slider/assets/index.css';
 import './Palette.css';
-import { useParams } from 'react-router';
 
 const Palette = (props) => {
   console.log(props);

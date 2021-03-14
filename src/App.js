@@ -2,8 +2,9 @@ import './App.css';
 import Palette from './Palette';
 import seedColors from './seedColors';
 import { gerneratePalette } from './colorHelper';
-import { Route, Switch, useParams } from 'react-router';
-import Child from './Child';
+import { Route, Switch } from 'react-router';
+
+import PaletteList from './PaletteList';
 
 function App() {
   const findPalette = (id) => {
@@ -14,7 +15,11 @@ function App() {
 
   return (
     <Switch>
-      <Route exact path="/"></Route>
+      <Route
+        exact
+        path="/"
+        render={() => <PaletteList palettes={seedColors} />}
+      />
       <Route
         exact
         path="/palette/:id/"
