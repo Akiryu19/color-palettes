@@ -17,7 +17,7 @@ const Navbar = (props) => {
   return (
     <header className="Navbar">
       <div className="logo">
-        <Link onTouchEnd="/">React Color Picker</Link>
+        <Link to="/">React Color Picker</Link>
       </div>
       <div className="slider-container">
         <span>Level:{props.level}</span>

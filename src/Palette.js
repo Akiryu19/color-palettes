@@ -5,7 +5,6 @@ import 'rc-slider/assets/index.css';
 import './Palette.css';
 
 const Palette = (props) => {
-  console.log(props);
   const [level, setLevel] = useState(400);
   const [format, setFormat] = useState('hex');
   const colorBoxes = props.palette.colors[level].map((color) => (
