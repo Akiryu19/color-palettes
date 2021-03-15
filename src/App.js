@@ -31,6 +31,10 @@ function App() {
           />
         )}
       />
+      <Route
+        path="/palette/:id/:colorID"
+        render={() => <h1>Single Color</h1>}
+      />
     </Switch>
   );
 }
