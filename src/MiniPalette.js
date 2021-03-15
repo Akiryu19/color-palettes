@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
-import { Hidden } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -14,7 +13,13 @@ const styles = {
       cursor: 'pointer',
     },
   },
-  colors: { backgroundColor: 'gray' },
+  colors: {
+    backgroundColor: '#eee',
+    height: '150px',
+    width: '100%',
+    borderRadius: '5px',
+    overflow: 'hidden',
+  },
   title: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -26,14 +31,28 @@ const styles = {
     position: 'relative',
   },
   emoji: { marginLeft: '1rem', fontSize: '1.5rem' },
+  miniColor: {
+    height: '25%',
+    width: '20%',
+    display: 'inline-block',
+    margin: '0 auto',
+    position: 'relative',
+    marginBottom: '-3.5px',
+  },
 };
 const MiniPalette = (props) => {
-  const { classes } = props;
-  const { palette } = props;
+  const { classes, palette } = props;
+  const miniColorBox = palette.colors.map((color) => (
+    <div
+      key={color.color}
+      className={classes.miniColor}
+      style={{ backgroundColor: color.color }}
+    ></div>
+  ));
 
   return (
-    <div className={classes.root}>
-      <div className={classes.colors}></div>
+    <div className={classes.root} onClick={() => props.goToPalette(palette.id)}>
+      <div className={classes.colors}>{miniColorBox}</div>
       <h5 className={classes.title}>
         {palette.paletteName}
         <span className={classes.emoji}> {palette.emoji}</span>

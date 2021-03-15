@@ -18,7 +18,9 @@ function App() {
       <Route
         exact
         path="/"
-        render={() => <PaletteList palettes={seedColors} />}
+        render={(routeProps) => (
+          <PaletteList palettes={seedColors} {...routeProps} />
+        )}
       />
       <Route
         exact
@@ -29,14 +31,6 @@ function App() {
           />
         )}
       />
-      {/* <Palette
-         
-          palette={findPalette()}
-        /> */}
-
-      {/* <div className="App">
-        <Palette Palette={gerneratePalette(seedColors[4])} />
-      </div> */}
     </Switch>
   );
 }
