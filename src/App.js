@@ -5,6 +5,7 @@ import { gerneratePalette } from './colorHelper';
 import { Route, Switch } from 'react-router';
 
 import PaletteList from './PaletteList';
+import SingleColorPalette from './SingleColorPalette';
 
 function App() {
   const findPalette = (id) => {
@@ -33,7 +34,7 @@ function App() {
       />
       <Route
         path="/palette/:id/:colorID"
-        render={() => <h1>Single Color</h1>}
+        render={() => <SingleColorPalette />}
       />
     </Switch>
   );

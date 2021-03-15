@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 
 const ColorBox = (props) => {
-  const { name, background } = props;
+  const { name, background, paletteId, id } = props;
   const [copied, setCopied] = useState(false);
   const changeCopiedState = () => {
     setCopied(true);
@@ -33,7 +33,7 @@ const ColorBox = (props) => {
           <button className="copy-button">Copy</button>
         </div>
         <Link
-          to="/"
+          to={`/palette/${paletteId}/${id}`}
           onClick={(e) => {
             e.stopPropagation();
           }}

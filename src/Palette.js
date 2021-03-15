@@ -8,7 +8,13 @@ const Palette = (props) => {
   const [level, setLevel] = useState(400);
   const [format, setFormat] = useState('hex');
   const colorBoxes = props.palette.colors[level].map((color) => (
-    <ColorBox background={color[format]} name={color.name} key={color.id} />
+    <ColorBox
+      background={color[format]}
+      name={color.name}
+      key={color.id}
+      id={color.id}
+      paletteId={props.palette.id}
+    />
   ));
   const changeLevel = (level) => {
     setLevel(level);
