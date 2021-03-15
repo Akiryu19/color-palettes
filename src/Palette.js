@@ -14,6 +14,7 @@ const Palette = (props) => {
       key={color.id}
       id={color.id}
       paletteId={props.palette.id}
+      showLink={true}
     />
   ));
   const changeLevel = (level) => {

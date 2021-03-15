@@ -33,8 +33,15 @@ function App() {
         )}
       />
       <Route
-        path="/palette/:id/:colorID"
-        render={() => <SingleColorPalette />}
+        path="/palette/:paletteId/:colorId"
+        render={(routeProps) => (
+          <SingleColorPalette
+            colorId={routeProps.match.params.colorId}
+            palette={gerneratePalette(
+              findPalette(routeProps.match.params.paletteId)
+            )}
+          />
+        )}
       />
     </Switch>
   );
