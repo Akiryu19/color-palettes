@@ -19,18 +19,20 @@ const Navbar = (props) => {
       <div className="logo">
         <Link to="/">React Color Picker</Link>
       </div>
-      <div className="slider-container">
-        <span>Level:{props.level}</span>
-        <div className="slider">
-          <Slider
-            defaultValue={props.level}
-            min={100}
-            max={900}
-            step={100}
-            onAfterChange={props.changeLevel}
-          />
+      {props.showSlider && (
+        <div className="slider-container">
+          <span>Level:{props.level}</span>
+          <div className="slider">
+            <Slider
+              defaultValue={props.level}
+              min={100}
+              max={900}
+              step={100}
+              onAfterChange={props.changeLevel}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <div className="select-container">
         <Select value={props.format} onChange={props.changeFormat}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
