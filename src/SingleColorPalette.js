@@ -3,10 +3,47 @@ import { Link } from 'react-router-dom';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
+import { withStyles } from '@material-ui/styles';
 
+const styles = {
+  Palette: {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  PaletteColors: { height: '90%' },
+  goBack: {
+    width: '20%',
+    height: (props) => (props.showFullPalette ? '25%' : '50%'),
+    margin: '0 auto',
+    marginBottom: '-3px',
+    display: 'inline-block',
+    position: 'relative',
+    cursor: 'pointer',
+    backgroundColor: '#000',
+    '& a': {
+      color: '#fff',
+      width: '100px',
+      height: '30px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginLeft: '-50px',
+      marginTop: '-15px',
+      textAlign: 'center',
+      outline: 'none',
+      background: 'rgba(255, 255, 255, 0.3)',
+      fontSize: ' 1rem',
+      lineHeight: '30px',
+      textTransform: 'uppercase',
+      border: 'none',
+      textDecoration: 'none',
+    },
+  },
+};
 const SingleColorPalette = (props) => {
   const [format, setFormat] = useState('hex');
-  const { palette, colorId } = props;
+  const { palette, colorId, classes } = props;
   const gatherShades = (palette, colorToFilterBy) => {
     let shades = [];
     let allColors = palette.colors;
@@ -33,14 +70,12 @@ const SingleColorPalette = (props) => {
   ));
 
   return (
-    <div className="Palette singleColorpalette">
+    <div className={classes.Palette}>
       <Navbar changeFormat={changeFormat} format={format} showSlider={false} />
-      <div className="Palette-colors">
+      <div className={classes.PaletteColors}>
         {colorBoxes}
-        <div className="go-back ColorBox">
-          <Link to={`/palette/${palette.id}/`} className="back-button">
-            Go back
-          </Link>
+        <div className={classes.goBack}>
+          <Link to={`/palette/${palette.id}/`}>Go back</Link>
         </div>
       </div>
       <PaletteFooter {...palette} />
@@ -48,4 +83,4 @@ const SingleColorPalette = (props) => {
   );
 };
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);

@@ -4,8 +4,18 @@ import Navbar from './Navbar';
 import 'rc-slider/assets/index.css';
 import './Palette.css';
 import PaletteFooter from './PaletteFooter';
+import { withStyles } from '@material-ui/styles';
 
+const styles = {
+  Palette: {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  PaletteColors: { height: '90%' },
+};
 const Palette = (props) => {
+  const { classes } = props;
   const [level, setLevel] = useState(400);
   const [format, setFormat] = useState('hex');
   const colorBoxes = props.palette.colors[level].map((color) => (
@@ -25,7 +35,7 @@ const Palette = (props) => {
     setFormat(e.target.value);
   };
   return (
-    <div className="Palette">
+    <div className={classes.Palette}>
       <Navbar
         level={level}
         format={format}
@@ -34,11 +44,11 @@ const Palette = (props) => {
         showSlider={true}
       />
 
-      <div className="Palette-colors">{colorBoxes}</div>
+      <div className={classes.PaletteColors}>{colorBoxes}</div>
 
       <PaletteFooter {...props.palette} />
     </div>
   );
 };
 
-export default Palette;
+export default withStyles(styles)(Palette);
