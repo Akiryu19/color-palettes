@@ -2,18 +2,11 @@ import React, { useState } from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import 'rc-slider/assets/index.css';
-import './Palette.css';
+// import './Palette.css';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
+import styles from './styles/PaletteStyles';
 
-const styles = {
-  Palette: {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  PaletteColors: { height: '90%' },
-};
 const Palette = (props) => {
   const { classes } = props;
   const [level, setLevel] = useState(400);
