@@ -15,7 +15,7 @@ const Palette = (props) => {
       key={color.id}
       id={color.id}
       paletteId={props.palette.id}
-      showLink={true}
+      showFullPalette={true}
     />
   ));
   const changeLevel = (level) => {
@@ -36,10 +36,6 @@ const Palette = (props) => {
 
       <div className="Palette-colors">{colorBoxes}</div>
 
-      {/* <footer className="Palette-footer">
-        {props.palette.paletteName}
-        <span className="emoji"> {props.palette.emoji}</span>
-      </footer> */}
       <PaletteFooter {...props.palette} />
     </div>
   );

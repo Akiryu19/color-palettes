@@ -28,7 +28,7 @@ const SingleColorPalette = (props) => {
       key={color.hex}
       name={color.name}
       background={color[format]}
-      showLink={false}
+      showFullPalette={false}
     />
   ));
 
