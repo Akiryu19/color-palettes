@@ -12,6 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
+import DraggableColorBox from './DraggableColorBox';
+import { CachedOutlined } from '@material-ui/icons';
 
 const drawerWidth = 300;
 
@@ -56,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
+    height: 'calc(100vh - 64px)',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -76,7 +79,7 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   //   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const [currentColor, setCurrentColor] = useState('blue');
+  const [currentColor, setCurrentColor] = useState('white');
   const [colors, setColors] = useState(['purple', 'pink']);
 
   const handleDrawerOpen = () => {
@@ -162,11 +165,10 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <ul>
-          {colors.map((color) => (
-            <li style={{ backgroundColor: color }}>{color}</li>
-          ))}
-        </ul>
+
+        {colors.map((color) => (
+          <DraggableColorBox color={color} />
+        ))}
       </main>
     </div>
   );
