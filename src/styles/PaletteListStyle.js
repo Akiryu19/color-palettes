@@ -17,7 +17,13 @@ const styles = {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
+    alignItems: 'center',
     color: '#fff',
+    '& a': {
+      textDecoration: 'none',
+      color: '#FFF',
+      fontWeight: 'bold',
+    },
   },
   palettes: {
     boxSizing: 'border-box',
