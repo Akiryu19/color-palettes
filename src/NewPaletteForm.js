@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -75,7 +75,9 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   //   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(true);
+  const [currentColor, setCurrentColor] = useState('blue');
+  const [colors, setColors] = useState(['purple', 'pink']);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -83,6 +85,12 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+  const updateCurrentcolor = (newColor) => {
+    setCurrentColor(newColor.hex);
+  };
+  const addNewColor = () => {
+    setColors([...colors, currentColor]);
   };
 
   return (
@@ -134,11 +142,16 @@ export default function PersistentDrawerLeft() {
           </Button>
         </div>
         <ChromePicker
-          color="pink"
-          onChangeComplete={(color) => console.log(color)}
+          color={currentColor}
+          onChangeComplete={updateCurrentcolor}
         />
         <div>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={addNewColor}
+            style={{ backgroundColor: currentColor }}
+          >
             Add Color
           </Button>
         </div>
@@ -149,6 +162,11 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
+        <ul>
+          {colors.map((color) => (
+            <li style={{ backgroundColor: color }}>{color}</li>
+          ))}
+        </ul>
       </main>
     </div>
   );
