@@ -20,9 +20,9 @@ const styles = {
     alignItems: 'center',
     color: '#fff',
     '& a': {
-      textDecoration: 'none',
+      // textDecoration: 'none',
       color: '#FFF',
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
     },
   },
   palettes: {
