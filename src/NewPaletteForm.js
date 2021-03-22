@@ -82,12 +82,10 @@ export default function PersistentDrawerLeft(props) {
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState('#a4aa99');
   const [newName, setNewName] = useState('');
-  const [colors, setColors] = useState([
-    { color: 'pink', name: 'Spring-Pink' },
-    { color: '#81a144', name: 'Spring-Green' },
-  ]);
+  const [colors, setColors] = useState(props.palettes[0].colors);
   const [PaletteName, setPaletteName] = useState('');
-
+  const maxColors = 20;
+  const isPaletteFull = colors.length >= maxColors;
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -121,6 +119,16 @@ export default function PersistentDrawerLeft(props) {
 
   const removeColor = (colorName) =>
     setColors(colors.filter((color) => color.name !== colorName));
+  const clearColors = () => {
+    setColors([]);
+  };
+  const addRandomColor = () => {
+    const allColors = props.palettes.map((p) => p.colors).flat();
+    const ranNum = Math.floor(Math.random() * allColors.length);
+    const randomColor = allColors[ranNum];
+    // setCurrentColor(allColors[ranNum].color);
+    setColors([...colors, randomColor]);
+  };
 
   const onSortEnd = ({ oldIndex, newIndex }) =>
     setColors(arrayMove(colors, oldIndex, newIndex));
@@ -198,10 +206,15 @@ export default function PersistentDrawerLeft(props) {
         <Divider />
         <Typography variant="h4">Design Your Palette</Typography>
         <div>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={addRandomColor}
+            disabled={isPaletteFull}
+          >
             Random color
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={clearColors}>
             Clear Palette
           </Button>
         </div>
@@ -231,9 +244,12 @@ export default function PersistentDrawerLeft(props) {
             variant="contained"
             color="primary"
             type="submit"
-            style={{ backgroundColor: currentColor }}
+            style={{
+              backgroundColor: isPaletteFull ? '#999' : currentColor,
+            }}
+            disabled={isPaletteFull}
           >
-            Add Color
+            {isPaletteFull ? 'Colors is full' : 'Add Color'}
           </Button>
         </ValidatorForm>
       </Drawer>
