@@ -12,7 +12,7 @@ import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 
-const drawerWidth = 300;
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   hide: {
@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
     display: 'flex',
     alignItems: 'center',
+    width: drawerWidth,
   },
   drawerHeader: {
     display: 'flex',
@@ -43,14 +43,14 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: 0,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginLeft: drawerWidth,
   },
   container: {
     width: '90%',
