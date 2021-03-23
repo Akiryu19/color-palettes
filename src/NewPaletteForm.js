@@ -15,26 +15,6 @@ import ColorPickerForm from './ColorPickerForm';
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   hide: {
     display: 'none',
   },
@@ -44,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: 'flex',
+    alignItems: 'center',
   },
   drawerHeader: {
     display: 'flex',
@@ -70,6 +52,16 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  container: {
+    width: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
+  buttons: { width: '100%' },
+  button: { width: '50%', fontSize: '0.8em', fontWeight: 'bold' },
 }));
 
 export default function PersistentDrawerLeft(props) {
@@ -84,7 +76,6 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -143,26 +134,36 @@ export default function PersistentDrawerLeft(props) {
           </IconButton>
         </div>
         <Divider />
-        <Typography variant="h4">Design Your Palette</Typography>
-        <div>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={addRandomColor}
-            disabled={isPaletteFull}
-          >
-            Random color
-          </Button>
-          <Button variant="contained" color="secondary" onClick={clearColors}>
-            Clear Palette
-          </Button>
-        </div>
+        <div className={classes.container}>
+          <Typography variant="h5" gutterBottom>
+            Design Your Palette
+          </Typography>
+          <div className={classes.buttons}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={addRandomColor}
+              disabled={isPaletteFull}
+            >
+              Random color
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={clearColors}
+              className={classes.button}
+            >
+              Clear Palette
+            </Button>
+          </div>
 
-        <ColorPickerForm
-          isPaletteFull={isPaletteFull}
-          colors={colors}
-          addNewColor={addNewColor}
-        />
+          <ColorPickerForm
+            isPaletteFull={isPaletteFull}
+            colors={colors}
+            addNewColor={addNewColor}
+          />
+        </div>
       </Drawer>
       <main
         className={clsx(classes.content, {
