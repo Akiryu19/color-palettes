@@ -10,17 +10,9 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 
 export default function PaletteMetaForm(props) {
-  const [open, setOpen] = useState(true);
   const [PaletteName, setPaletteName] = useState('');
   const [stage, setStage] = useState('form');
-  //   const handleClickOpen = () => {
-  //     setOpen(true);
-  //   };
 
-  const handleClose = () => {
-    setOpen(false);
-    //   props.hideForm();
-  };
   const handlePaletteName = (e) => {
     setPaletteName(e.target.value);
   };
@@ -80,12 +72,7 @@ export default function PaletteMetaForm(props) {
             <Button onClick={props.hideForm} color="primary">
               Cancel
             </Button>
-            <Button
-              onClick={handleClose}
-              color="primary"
-              type="submit"
-              variant="contained"
-            >
+            <Button color="primary" type="submit" variant="contained">
               Save Palette
             </Button>
           </DialogActions>
