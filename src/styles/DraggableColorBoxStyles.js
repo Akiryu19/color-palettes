@@ -3,7 +3,7 @@ const styles = {
     height: '20%',
     width: '25%',
     margin: '0 auto',
-    marginBottom: '-3px',
+    marginBottom: '-5px',
     display: 'inline-block',
     position: 'relative',
     cursor: 'pointer',
