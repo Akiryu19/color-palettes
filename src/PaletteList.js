@@ -5,7 +5,7 @@ import styles from './styles/PaletteListStyle';
 import { Link } from 'react-router-dom';
 
 const PaletteList = (props) => {
-  const { palettes, classes } = props;
+  const { palettes, classes, deletePalette } = props;
   const goToPalette = (id) => {
     props.history.push(`/palette/${id}`);
   };
@@ -18,7 +18,13 @@ const PaletteList = (props) => {
         </nav>
         <div className={classes.palettes}>
           {palettes.map((p) => (
-            <MiniPalette key={p.id} palette={p} goToPalette={goToPalette} />
+            <MiniPalette
+              key={p.id}
+              id={p.id}
+              palette={p}
+              goToPalette={goToPalette}
+              handleDelete={deletePalette}
+            />
           ))}
         </div>
       </div>

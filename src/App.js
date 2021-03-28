@@ -22,14 +22,18 @@ function App() {
   const savePalette = (newPalette) => {
     setPalettes([...palettes, newPalette]);
   };
-
+  const deletePalette = (id) => {
+    console.log(id);
+    setPalettes(palettes.filter((palette) => palette.id !== id));
+    syncLocalStorage();
+  };
   //save palettes to local storage
-  const synLocalStorage = () => {
+  const syncLocalStorage = () => {
     window.localStorage.setItem('palettes', JSON.stringify(palettes));
   };
 
   useEffect(() => {
-    synLocalStorage();
+    syncLocalStorage();
   }, [palettes]);
 
   return (
@@ -49,7 +53,11 @@ function App() {
         exact
         path="/"
         render={(routeProps) => (
-          <PaletteList palettes={palettes} {...routeProps} />
+          <PaletteList
+            palettes={palettes}
+            {...routeProps}
+            deletePalette={deletePalette}
+          />
         )}
       />
       <Route
