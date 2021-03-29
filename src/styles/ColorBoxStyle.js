@@ -112,6 +112,9 @@ const styles = {
       textAlign: 'center',
       marginBottom: 0,
       padding: '1rem',
+      [sizes.down('xs')]: {
+        fontSize: '3rem',
+      },
     },
     '& p': {
       fontSize: '2rem',
