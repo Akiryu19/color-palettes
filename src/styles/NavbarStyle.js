@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 const styles = {
   Navbar: {
     display: 'flex',
@@ -6,16 +8,22 @@ const styles = {
     height: '6vh',
     fontFamily: 'Roboto',
   },
+  level: {
+    marginLeft: '1rem',
+  },
   logo: {
     marginRight: '15px',
     padding: '0 13px',
-    fontSize: '22px',
+    fontSize: '1.6rem',
     backgroundColor: '#fff',
     height: '100%',
     lineHeight: '48px',
     '& a': {
       textDecoration: 'none',
       color: '#000',
+    },
+    [sizes.down('md')]: {
+      display: 'none',
     },
   },
   slider: {
@@ -36,6 +44,9 @@ const styles = {
       width: '13px',
       height: '13px',
       marginTop: '-3px',
+    },
+    [sizes.down('xs')]: {
+      width: '150px',
     },
   },
   selectorContainer: {

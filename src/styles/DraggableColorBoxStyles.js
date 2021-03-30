@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 const styles = {
   root: {
     height: '20%',
@@ -9,6 +11,18 @@ const styles = {
     cursor: 'pointer',
     '&:hover button': {
       opacity: 1,
+    },
+    [sizes.down('lg')]: {
+      width: '25%',
+      height: '20%',
+    },
+    [sizes.down('md')]: {
+      width: '50%',
+      height: '10%',
+    },
+    [sizes.down('xs')]: {
+      width: '100%',
+      height: '5%',
     },
     '&:hover svg': {
       color: '#fff',
@@ -27,9 +41,19 @@ const styles = {
     fontSize: ' 12px',
     display: 'flex',
     justifyContent: 'space-between',
+    '& span': {
+      position: 'relative',
+      top: '10px',
+      [sizes.down('xs')]: {
+        fontSize: '14px',
+      },
+    },
   },
   delete: {
     transition: 'all 0.3s ease',
+    [sizes.down('xs')]: {
+      fontSize: '18px',
+    },
   },
 };
 

@@ -24,7 +24,7 @@ const Navbar = (props) => {
       </div>
       {props.showSlider && (
         <div>
-          <span>Level:{props.level}</span>
+          <span className={classes.level}>Level:{props.level}</span>
           <div className={classes.slider}>
             <Slider
               defaultValue={props.level}

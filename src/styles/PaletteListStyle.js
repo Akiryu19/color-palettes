@@ -1,7 +1,12 @@
+import sizes from './sizes';
+import bg from './bg.svg';
+
 const styles = {
   root: {
-    backgroundColor: 'blue',
-    height: '100%',
+    backgroundColor: '#445aaa',
+    backgroundImage: `url(${bg})`,
+    /* background by SVGBackgrounds.com */
+    minHeight: '100vh',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -13,6 +18,12 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     flexWrap: 'wrap',
+    [sizes.down('xl')]: {
+      width: '80%',
+    },
+    [sizes.down('xl')]: {
+      width: '70%',
+    },
   },
   nav: {
     display: 'flex',
@@ -31,7 +42,13 @@ const styles = {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(3,30%)',
-    gridGap: '5%',
+    gridGap: '1rem',
+    [sizes.down('md')]: {
+      gridTemplateColumns: 'repeat(2,50%)',
+    },
+    [sizes.down('xs')]: {
+      gridTemplateColumns: 'repeat(1,100%)',
+    },
   },
 };
 

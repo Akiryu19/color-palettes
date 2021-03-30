@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 const styles = {
   PaletteFooter: {
     height: '5vh',

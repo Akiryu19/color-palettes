@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './constants';
+import sizes from './sizes';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    [sizes.down('xs')]: {
+      marginTop: '8px',
+    },
   },
   content: {
     flexGrow: 1,
@@ -30,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,

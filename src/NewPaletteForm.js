@@ -17,7 +17,11 @@ export default function PersistentDrawerLeft(props) {
   //   const theme = useTheme();
   const [open, setOpen] = useState(true);
 
-  const [colors, setColors] = useState(props.palettes[0].colors);
+  const [colors, setColors] = useState([
+    { color: '#9c88ff', name: 'Periwinkle' },
+    { color: '#dcdde1', name: 'HintOfPensive' },
+    { color: '#22a6b3', name: 'GreenlandGreen' },
+  ]);
 
   const maxColors = 20;
   const isPaletteFull = colors.length >= maxColors;
