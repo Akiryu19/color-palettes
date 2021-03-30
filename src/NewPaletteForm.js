@@ -17,11 +17,7 @@ export default function PersistentDrawerLeft(props) {
   //   const theme = useTheme();
   const [open, setOpen] = useState(true);
 
-  const [colors, setColors] = useState([
-    { color: '#9c88ff', name: 'Periwinkle' },
-    { color: '#dcdde1', name: 'HintOfPensive' },
-    { color: '#22a6b3', name: 'GreenlandGreen' },
-  ]);
+  const [colors, setColors] = useState([]);
 
   const maxColors = 20;
   const isPaletteFull = colors.length >= maxColors;
@@ -50,22 +46,19 @@ export default function PersistentDrawerLeft(props) {
   };
 
   const addRandomColor = () => {
-    const randomColorHex = `#${Math.floor(Math.random() * 16777215).toString(
-      16
-    )}`;
+    const randomColorHex = `#${Math.random().toString(16).substr(2, 6)}`;
     const randomColor = { color: randomColorHex, name: randomColorHex };
     setColors([...colors, randomColor]);
     // const allColors = props.palettes.map((p) => p.colors).flat();
     // //排除重复颜色
     // const filteredColors = allColors.filter((color) => !colors.includes(color));
-
     // const ranNum = Math.floor(Math.random() * filteredColors.length);
     // if (filteredColors.length !== 0) {
     //   const randomColor = filteredColors[ranNum];
     //   setColors([...colors, randomColor]);
     // } else {
     //   alert(
-    //     'To generate random color, you need to add at least one color Palette :('
+    //     'To generate more random colors, you need to add more color Palettes :('
     //   );
     // }
   };
