@@ -23,7 +23,6 @@ function App() {
     setPalettes([...palettes, newPalette]);
   };
   const deletePalette = (id) => {
-    console.log(id);
     setPalettes(palettes.filter((palette) => palette.id !== id));
     syncLocalStorage();
   };

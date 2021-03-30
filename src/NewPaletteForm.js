@@ -36,11 +36,6 @@ export default function PersistentDrawerLeft(props) {
     setColors([...colors, newColor]);
   };
   const handleSubmit = (newPalette) => {
-    // const newPalette = {
-    //   paletteName: newPaletteName,
-    //   colors: colors,
-    //   id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-    // };
     newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
     newPalette.colors = colors;
     props.savePalette(newPalette);
@@ -49,15 +44,30 @@ export default function PersistentDrawerLeft(props) {
 
   const removeColor = (colorName) =>
     setColors(colors.filter((color) => color.name !== colorName));
+
   const clearColors = () => {
     setColors([]);
   };
-  const addRandomColor = () => {
-    const allColors = props.palettes.map((p) => p.colors).flat();
-    const ranNum = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors[ranNum];
 
+  const addRandomColor = () => {
+    const randomColorHex = `#${Math.floor(Math.random() * 16777215).toString(
+      16
+    )}`;
+    const randomColor = { color: randomColorHex, name: randomColorHex };
     setColors([...colors, randomColor]);
+    // const allColors = props.palettes.map((p) => p.colors).flat();
+    // //排除重复颜色
+    // const filteredColors = allColors.filter((color) => !colors.includes(color));
+
+    // const ranNum = Math.floor(Math.random() * filteredColors.length);
+    // if (filteredColors.length !== 0) {
+    //   const randomColor = filteredColors[ranNum];
+    //   setColors([...colors, randomColor]);
+    // } else {
+    //   alert(
+    //     'To generate random color, you need to add at least one color Palette :('
+    //   );
+    // }
   };
 
   const onSortEnd = ({ oldIndex, newIndex }) =>
