@@ -21,7 +21,7 @@ const MiniPalette = (props) => {
       style={{ backgroundColor: color.color }}
     ></div>
   ));
-  console.log('test:', palette.paletteName);
+
   return (
     <div className={classes.root} onClick={handleClick}>
       <DeleteIcon className={classes.deleteIcon} onClick={deletePalette} />

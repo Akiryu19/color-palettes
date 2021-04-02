@@ -10,6 +10,7 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 
 export default function PaletteMetaForm(props) {
+  const { handleSubmit, palettes, hideForm } = props;
   const [PaletteName, setPaletteName] = useState('');
   const [stage, setStage] = useState('form');
 
@@ -25,21 +26,21 @@ export default function PaletteMetaForm(props) {
       paletteName: PaletteName,
       emoji: emoji.native,
     };
-    props.handleSubmit(newPalette);
+    handleSubmit(newPalette);
     setStage('');
   };
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
-      return props.palettes.every(
+      return palettes.every(
         ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
       );
     });
-  }, [PaletteName, props.palettes]);
+  }, [PaletteName, palettes]);
 
   return (
     <div>
-      <Dialog open={stage === 'emoji'} onClose={props.hideForm}>
+      <Dialog open={stage === 'emoji'} onClose={hideForm}>
         <DialogTitle id="form-dialog-title">
           Choose an Emoji for your Palette
         </DialogTitle>
@@ -47,7 +48,7 @@ export default function PaletteMetaForm(props) {
       </Dialog>
       <Dialog
         open={stage === 'form'}
-        onClose={props.hideForm}
+        onClose={hideForm}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
@@ -70,7 +71,7 @@ export default function PaletteMetaForm(props) {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={props.hideForm} color="primary">
+            <Button onClick={hideForm} color="primary">
               Cancel
             </Button>
             <Button color="primary" type="submit" variant="contained">

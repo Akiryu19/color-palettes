@@ -36,7 +36,6 @@ const PaletteList = (props) => {
     deletePalette(deleteId);
     closeDialog();
   };
-  console.log('test');
 
   return (
     <div className={classes.root}>

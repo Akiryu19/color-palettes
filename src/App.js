@@ -1,14 +1,16 @@
 import './App.css';
-import Palette from './Palette';
-import seedColors from './seedColors';
-import { gerneratePalette } from './colorHelper';
+import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+import Palette from './Palette';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
-import { useState, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Page from './Page';
+import seedColors from './seedColors';
+import { gerneratePalette } from './colorHelper';
+
 function App() {
   //check localstorage
   const savePalettes = JSON.parse(window.localStorage.getItem('palettes'));
@@ -22,6 +24,7 @@ function App() {
   const savePalette = (newPalette) => {
     setPalettes([...palettes, newPalette]);
   };
+
   const deletePalette = (id) => {
     setPalettes(palettes.filter((palette) => palette.id !== id));
     syncLocalStorage();
@@ -40,12 +43,7 @@ function App() {
     <Route
       render={({ location }) => (
         <TransitionGroup>
-          <CSSTransition
-            exit={false}
-            timeout={500}
-            classNames="page"
-            key={location.pathname}
-          >
+          <CSSTransition timeout={500} classNames="page" key={location.key}>
             <Switch location={location}>
               <Route
                 exact
@@ -96,6 +94,17 @@ function App() {
                       palette={gerneratePalette(
                         findPalette(routeProps.match.params.paletteId)
                       )}
+                    />
+                  </Page>
+                )}
+              />
+              <Route
+                render={(routeProps) => (
+                  <Page>
+                    <PaletteList
+                      palettes={palettes}
+                      {...routeProps}
+                      deletePalette={deletePalette}
                     />
                   </Page>
                 )}

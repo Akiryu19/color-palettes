@@ -3,6 +3,7 @@ import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import useStyles from './styles/ColorPickerFormStyles';
+import chroma from 'chroma-js';
 
 const ColorPickerForm = (props) => {
   const classes = useStyles();
@@ -67,6 +68,10 @@ const ColorPickerForm = (props) => {
             type="submit"
             style={{
               backgroundColor: isPaletteFull ? '#999' : currentColor,
+              color:
+                chroma(currentColor).luminance() <= 0.5
+                  ? 'rgba(255,255,255,0.7)'
+                  : 'rgba(0,0,0,0.4)',
             }}
             disabled={isPaletteFull}
           >

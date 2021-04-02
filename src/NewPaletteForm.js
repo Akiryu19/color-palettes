@@ -14,7 +14,7 @@ import useStyles from './styles/NewPaletteFormStyles';
 
 export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
-  //   const theme = useTheme();
+
   const [open, setOpen] = useState(true);
 
   const [colors, setColors] = useState([]);
@@ -74,6 +74,7 @@ export default function PersistentDrawerLeft(props) {
         classes={classes}
         palettes={props.palettes}
         handleSubmit={handleSubmit}
+        colors={colors}
       />
       <Drawer
         className={classes.drawer}

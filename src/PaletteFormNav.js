@@ -14,7 +14,7 @@ import PaletteMetaForm from './PaletteMetaForm';
 export default function PaletteFormNav(props) {
   const classes = useStyles();
   const [formShowing, setFormShowing] = useState(false);
-  const { handleDrawerOpen, open } = props;
+  const { handleDrawerOpen, open, palettes, handleSubmit, colors } = props;
   const showForm = () => {
     setFormShowing(true);
   };
@@ -51,15 +51,20 @@ export default function PaletteFormNav(props) {
               Go Back
             </Button>
           </Link>
-          <Button variant="contained" color="primary" onClick={showForm}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={showForm}
+            disabled={colors.length === 0}
+          >
             Save
           </Button>
         </div>
       </AppBar>
       {formShowing && (
         <PaletteMetaForm
-          palettes={props.palettes}
-          handleSubmit={props.handleSubmit}
+          palettes={palettes}
+          handleSubmit={handleSubmit}
           hideForm={hideForm}
         />
       )}

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import 'rc-slider/assets/index.css';
-// import './Palette.css';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles/PaletteStyles';
 
 const Palette = (props) => {
-  const { classes } = props;
+  const { classes, palette } = props;
   const [level, setLevel] = useState(400);
   const [format, setFormat] = useState('hex');
   const colorBoxes = props.palette.colors[level].map((color) => (
@@ -17,7 +16,7 @@ const Palette = (props) => {
       name={color.name}
       key={color.id}
       id={color.id}
-      paletteId={props.palette.id}
+      paletteId={palette.id}
       showFullPalette={true}
     />
   ));
@@ -39,7 +38,7 @@ const Palette = (props) => {
 
       <div className={classes.PaletteColors}>{colorBoxes}</div>
 
-      <PaletteFooter {...props.palette} />
+      <PaletteFooter {...palette} />
     </div>
   );
 };
