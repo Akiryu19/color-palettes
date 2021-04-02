@@ -40,80 +40,80 @@ function App() {
   }, [palettes]);
 
   return (
-    <Route
-      render={({ location }) => (
-        <TransitionGroup>
-          <CSSTransition timeout={500} classNames="page" key={location.key}>
-            <Switch location={location}>
-              <Route
-                exact
-                path="/palette/new"
-                render={(routeProps) => (
-                  <Page>
-                    <NewPaletteForm
-                      savePalette={savePalette}
-                      palettes={palettes}
-                      {...routeProps}
-                    />
-                  </Page>
-                )}
-              />
-              <Route
-                exact
-                path="/"
-                render={(routeProps) => (
-                  <Page>
-                    <PaletteList
-                      palettes={palettes}
-                      {...routeProps}
-                      deletePalette={deletePalette}
-                    />
-                  </Page>
-                )}
-              />
-              <Route
-                exact
-                path="/palette/:id/"
-                render={(routeProps) => (
-                  <Page>
-                    <Palette
-                      palette={gerneratePalette(
-                        findPalette(routeProps.match.params.id)
-                      )}
-                    />
-                  </Page>
-                )}
-              />
+    // <Route
+    //   render={({ location }) => (
+    //     <TransitionGroup>
+    //       <CSSTransition timeout={500} classNames="page" key={location.key}>
+    <Switch>
+      <Route
+        exact
+        path="/palette/new"
+        render={(routeProps) => (
+          <Page>
+            <NewPaletteForm
+              savePalette={savePalette}
+              palettes={palettes}
+              {...routeProps}
+            />
+          </Page>
+        )}
+      />
+      <Route
+        exact
+        path="/"
+        render={(routeProps) => (
+          <Page>
+            <PaletteList
+              palettes={palettes}
+              {...routeProps}
+              deletePalette={deletePalette}
+            />
+          </Page>
+        )}
+      />
+      <Route
+        exact
+        path="/palette/:id/"
+        render={(routeProps) => (
+          <Page>
+            <Palette
+              palette={gerneratePalette(
+                findPalette(routeProps.match.params.id)
+              )}
+            />
+          </Page>
+        )}
+      />
 
-              <Route
-                path="/palette/:paletteId/:colorId"
-                render={(routeProps) => (
-                  <Page>
-                    <SingleColorPalette
-                      colorId={routeProps.match.params.colorId}
-                      palette={gerneratePalette(
-                        findPalette(routeProps.match.params.paletteId)
-                      )}
-                    />
-                  </Page>
-                )}
-              />
-              <Route
-                render={(routeProps) => (
-                  <Page>
-                    <PaletteList
-                      palettes={palettes}
-                      {...routeProps}
-                      deletePalette={deletePalette}
-                    />
-                  </Page>
-                )}
-              />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-      )}
-    />
+      <Route
+        path="/palette/:paletteId/:colorId"
+        render={(routeProps) => (
+          <Page>
+            <SingleColorPalette
+              colorId={routeProps.match.params.colorId}
+              palette={gerneratePalette(
+                findPalette(routeProps.match.params.paletteId)
+              )}
+            />
+          </Page>
+        )}
+      />
+      <Route
+        render={(routeProps) => (
+          <Page>
+            <PaletteList
+              palettes={palettes}
+              {...routeProps}
+              deletePalette={deletePalette}
+            />
+          </Page>
+        )}
+      />
+    </Switch>
+    //       </CSSTransition>
+    //     </TransitionGroup>
+    //   )}
+    // />
   );
 }
 //待解决：加了CSSTransition之后会产生rerender twice
