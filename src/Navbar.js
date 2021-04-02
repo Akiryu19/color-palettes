@@ -20,7 +20,7 @@ const Navbar = (props) => {
   return (
     <header className={classes.Navbar}>
       <div className={classes.logo}>
-        <Link to="/">React Color Picker</Link>
+        <Link to="/color-palettes/">React Color Picker</Link>
       </div>
       {props.showSlider && (
         <div>
