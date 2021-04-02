@@ -46,7 +46,7 @@ export default function PaletteFormNav(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <Link to="/">
+          <Link to="/color-palettes/">
             <Button variant="contained" color="secondary">
               Go Back
             </Button>

@@ -47,7 +47,7 @@ function App() {
     <Switch>
       <Route
         exact
-        path="/palette/new"
+        path="/color-palettes/palette/new"
         render={(routeProps) => (
           <Page>
             <NewPaletteForm
@@ -73,7 +73,7 @@ function App() {
       />
       <Route
         exact
-        path="/palette/:id/"
+        path="/color-palettes/palette/:id/"
         render={(routeProps) => (
           <Page>
             <Palette
