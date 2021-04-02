@@ -1,14 +1,17 @@
 import React from 'react';
-import { withStyles } from '@material-ui/styles';
-import styles from './styles/MiniPaletteStyle';
+import useStyles from './styles/MiniPaletteStyle';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const MiniPalette = (props) => {
-  const { classes, palette, id, openDialog } = props;
+  const { palette, id, openDialog, goToPalette } = props;
 
+  const classes = useStyles();
   const deletePalette = (e) => {
     e.stopPropagation();
     openDialog(id);
+  };
+  const handleClick = () => {
+    goToPalette(palette.id);
   };
 
   const miniColorBox = palette.colors.map((color) => (
@@ -18,11 +21,10 @@ const MiniPalette = (props) => {
       style={{ backgroundColor: color.color }}
     ></div>
   ));
-
+  console.log('test:', palette.paletteName);
   return (
-    <div className={classes.root} onClick={() => props.goToPalette(palette.id)}>
+    <div className={classes.root} onClick={handleClick}>
       <DeleteIcon className={classes.deleteIcon} onClick={deletePalette} />
-
       <div className={classes.colors}>{miniColorBox}</div>
       <h5 className={classes.title}>
         {palette.paletteName}
@@ -32,4 +34,6 @@ const MiniPalette = (props) => {
   );
 };
 
-export default withStyles(styles)(MiniPalette); //higher order component
+export default React.memo(MiniPalette);
+
+//TODO: rerendering 问题待解决

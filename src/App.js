@@ -26,6 +26,7 @@ function App() {
     setPalettes(palettes.filter((palette) => palette.id !== id));
     syncLocalStorage();
   };
+
   //save palettes to local storage
   const syncLocalStorage = () => {
     window.localStorage.setItem('palettes', JSON.stringify(palettes));
@@ -39,7 +40,12 @@ function App() {
     <Route
       render={({ location }) => (
         <TransitionGroup>
-          <CSSTransition timeout={500} classNames="page" key={location.key}>
+          <CSSTransition
+            exit={false}
+            timeout={500}
+            classNames="page"
+            key={location.pathname}
+          >
             <Switch location={location}>
               <Route
                 exact
@@ -101,5 +107,6 @@ function App() {
     />
   );
 }
+//待解决：加了CSSTransition之后会产生rerender twice
 
 export default App;

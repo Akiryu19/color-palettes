@@ -1,4 +1,6 @@
-const styles = {
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
   root: {
     backgroundColor: '#fff',
     border: '1px solid #000',
@@ -51,6 +53,6 @@ const styles = {
     opacity: 0,
     transition: 'all 0.5s ease',
   },
-};
+});
 
-export default styles;
+export default useStyles;

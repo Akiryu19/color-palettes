@@ -24,9 +24,9 @@ const PaletteList = (props) => {
   const goToPalette = (id) => {
     props.history.push(`/palette/${id}`);
   };
-  const openDialog = (_id) => {
+  const openDialog = (id) => {
     setOpen(true);
-    setDeleteId(_id);
+    setDeleteId(id);
   };
   const closeDialog = () => {
     setOpen(false);
@@ -36,6 +36,8 @@ const PaletteList = (props) => {
     deletePalette(deleteId);
     closeDialog();
   };
+  console.log('test');
+
   return (
     <div className={classes.root}>
       <div className={classes.container}>
@@ -51,7 +53,7 @@ const PaletteList = (props) => {
                 id={p.id}
                 palette={p}
                 goToPalette={goToPalette}
-                handleDelete={deletePalette}
+                // handleDelete={deletePalette}
                 openDialog={openDialog}
               />
             </CSSTransition>
