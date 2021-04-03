@@ -84,7 +84,6 @@ function App() {
           </Page>
         )}
       />
-
       <Route
         path="/palette/:paletteId/:colorId"
         render={(routeProps) => (

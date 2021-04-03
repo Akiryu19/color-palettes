@@ -15,14 +15,15 @@ const styles = {
     backgroundColor: '#445aaa',
     backgroundImage: `url(${bg})`,
     /* background by SVGBackgrounds.com */
-    minHeight: '100vh',
+    Height: '100vh',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    overflowY: 'scroll',
   },
   container: {
     width: '50%',
-    height: '100%',
+    // height: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
